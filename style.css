@@ -1,3 +1,30 @@
 body {
-    background-color: red;
+  background-color: red;
+}
+
+#cards-on-hand {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+#first-card {
+  background-color: white;
+  width: 20%;
+  height: 20em;
+}
+
+#second-card {
+  background-color: white;
+  width: 20%;
+  height: 20em;
+}
+
+#third-card {
+  background-color: white;
+  width: 20%;
+  height: 20em;
+}
+
+.hidden{
+    display: none;
 }
