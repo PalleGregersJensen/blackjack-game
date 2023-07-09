@@ -94,6 +94,9 @@ function showThirdCard() {
   console.log(playersCardsOnHand);
   playerPoints = playerPoints + newThirdCard.value;
   console.log(playerPoints);
+  if (playerPoints > 21) {
+    tooManyPointsForPlayer();
+  }
   document.querySelector("#third-card").classList.remove("hidden");
   const cardHtml = /*html*/ `<p>${newThirdCard.name}</p>`;
   document.querySelector("#third-card").insertAdjacentHTML("beforeend", cardHtml);
@@ -111,6 +114,9 @@ function showFourthCard() {
   console.log(playersCardsOnHand);
   playerPoints = playerPoints + newFourthCard.value;
   console.log(playerPoints);
+  if (playerPoints > 21) {
+    tooManyPointsForPlayer();
+  }
   document.querySelector("#fourth-card").classList.remove("hidden");
   const cardHtml = /*html*/ `<p>${newFourthCard.name}</p>`;
   document.querySelector("#fourth-card").insertAdjacentHTML("beforeend", cardHtml);
@@ -128,7 +134,37 @@ function showFifthCard() {
   console.log(playersCardsOnHand);
   playerPoints = playerPoints + newFifthCard.value;
   console.log(playerPoints);
+  if (playerPoints > 21) {
+    tooManyPointsForPlayer();
+  }
   document.querySelector("#fifth-card").classList.remove("hidden");
   const cardHtml = /*html*/ `<p>${newFifthCard.name}</p>`;
   document.querySelector("#fifth-card").insertAdjacentHTML("beforeend", cardHtml);
+}
+
+// ==== too many points for player ======
+function tooManyPointsForPlayer () {  
+    document.querySelector("#deal-card").classList.add("hidden");
+    document.querySelector("#too-many-points-for-player").textContent = `Game over. You have ${playerPoints} points`;
+  document.querySelector("#try-again").classList.remove("hidden");
+  document.querySelector("#try-again").addEventListener("click", resetGame);
+}
+
+// ==== reset game ======
+function resetGame() {
+  document.querySelector("#try-again").classList.add("hidden");
+  document.querySelector("#too-many-points-for-player").textContent = ``;
+  document.querySelector("#deal-card").classList.remove("hidden");
+  playerPoints = 0;
+  playersCardsOnHand = [];
+  document.querySelector("#first-card").innerHTML = "";
+  document.querySelector("#second-card").innerHTML = "";
+  document.querySelector("#third-card").innerHTML = "";
+  document.querySelector("#fourth-card").innerHTML = "";
+  document.querySelector("#fifth-card").innerHTML = "";
+  document.querySelector("#first-card").classList.add("hidden");
+  document.querySelector("#second-card").classList.add("hidden");
+  document.querySelector("#third-card").classList.add("hidden");
+  document.querySelector("#fourth-card").classList.add("hidden");
+  document.querySelector("#fifth-card").classList.add("hidden");
 }
