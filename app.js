@@ -266,5 +266,10 @@ console.log(computerPoints);
 document.querySelector("#first-card-for-computer").classList.remove("hidden");
 const cardHtml = /*html*/ `<p>${newFirstCard.name}</p>`;
 document.querySelector("#first-card-for-computer").insertAdjacentHTML("beforeend", cardHtml);
-document.querySelector("#result-for-computer").textContent = `${computerPoints}`;
+  document.querySelector("#result-for-computer").textContent = `${computerPoints}`;
+  showSecondCardForComputer();
+}
+
+function showSecondCardForComputer() {
+  console.log("Andet kort for compter");
 }
