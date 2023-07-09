@@ -56,8 +56,24 @@ function showFirstCard() {
   console.log(firstCardNumber);
   let newFirstCard = cardgame[firstCardNumber];
   console.log(newFirstCard);
+  if (playersCardsOnHand.includes(newFirstCard)) {
+    showFirstCard();
+  }
   playersCardsOnHand.push(newFirstCard);
+  // if (playerPoints > 10 && newFirstCard.value === 11) {
+    // newFirstCard.value = 1;
+  // }
   console.log(playersCardsOnHand);
+  console.log(playersCardsOnHand[0].value);
+  if (playersCardsOnHand[0].value === 11 && playerPoints > 10) {
+    playersCardsOnHand[0].value = 1;
+  // } else if (playersCardsOnHand[1].value === 11 && playerPoints > 10) {
+    // playersCardsOnHand[1].value = 1;
+  // } else if (playersCardsOnHand[2].value === 11 && playerPoints > 10) {
+    // playersCardsOnHand[2].value = 1;
+  // } else if (playersCardsOnHand[3].value === 11 && playerPoints > 10) {
+    // playersCardsOnHand[3].value = 1;
+  }
   playerPoints = newFirstCard.value;
   console.log(playerPoints);
   document.querySelector("#stand-for-player-button").classList.remove("hidden");
@@ -76,8 +92,23 @@ function showSecondCard() {
   console.log(secondCardNumber);
   let newSecondCard = cardgame[secondCardNumber];
   console.log(newSecondCard);
+  if (playersCardsOnHand.includes(newSecondCard)) {
+    showSecondCard();
+  }
   playersCardsOnHand.push(newSecondCard);
+  if (playerPoints > 10 && newSecondCard.value === 11) {
+    newSecondCard.value = 1;
+  }
   console.log(playersCardsOnHand);
+  if (playersCardsOnHand.includes(playersCardsOnHand[0].value === 11) && playerPoints > 10) {
+    playersCardsOnHand[0].value = 1;
+  } else if (playersCardsOnHand[1].value === 11 && playerPoints > 10) {
+    playersCardsOnHand[1].value = 1;
+  // } else if (playersCardsOnHand[2].value === 11 && playerPoints > 10) {
+    // playersCardsOnHand[2].value = 1;
+  // } else if (playersCardsOnHand.includes(playersCardsOnHand[3].value === 11) && playerPoints > 10) {
+    // playersCardsOnHand[3].value = 1;
+  }
   playerPoints = playerPoints + newSecondCard.value;
   console.log(playerPoints);
   document.querySelector("#second-card").classList.remove("hidden");
@@ -95,8 +126,23 @@ function showThirdCard() {
   console.log(thirdCardNumber);
   let newThirdCard = cardgame[thirdCardNumber];
   console.log(newThirdCard);
+  if (playersCardsOnHand.includes(newThirdCard)) {
+    showThirdCard();
+  }
   playersCardsOnHand.push(newThirdCard);
+  if (playerPoints > 10 && newThirdCard.value === 11) {
+    newThirdCard.value = 1;
+  }
   console.log(playersCardsOnHand);
+  if (playersCardsOnHand[0].value === 11 && playerPoints > 10) {
+    playersCardsOnHand[0].value = 1;
+  } else if (playersCardsOnHand[1].value === 11 && playerPoints > 10) {
+    playersCardsOnHand[1].value = 1;
+  } else if (playersCardsOnHand[2].value === 11 && playerPoints > 10) {
+    playersCardsOnHand[2].value = 1;
+  // } else if (playersCardsOnHand.includes(playersCardsOnHand[3].value === 11) && playerPoints > 10) {
+  //   playersCardsOnHand[3].value = 1;
+  }
   playerPoints = playerPoints + newThirdCard.value;
   console.log(playerPoints);
   if (playerPoints > 21) {
@@ -117,8 +163,23 @@ function showFourthCard() {
   console.log(fourthCardNumber);
   let newFourthCard = cardgame[fourthCardNumber];
   console.log(newFourthCard);
+  if (playersCardsOnHand.includes(newFourthCard)) {
+    showFourthCard();
+  }
   playersCardsOnHand.push(newFourthCard);
+  if (playerPoints > 10 && newFourthCard.value === 11) {
+    newFourthCard.value = 1;
+  }
   console.log(playersCardsOnHand);
+  if (playersCardsOnHand[0].value === 11 && playerPoints > 10) {
+    playersCardsOnHand[0].value = 1;
+  } else if (playersCardsOnHand[1].value === 11 && playerPoints > 10) {
+    playersCardsOnHand[1].value = 1;
+  } else if (playersCardsOnHand[2].value === 11 && playerPoints > 10) {
+    playersCardsOnHand[2].value = 1;
+  } else if (playersCardsOnHand[3].value === 11 && playerPoints > 10) {
+    playersCardsOnHand[3].value = 1;
+  }
   playerPoints = playerPoints + newFourthCard.value;
   console.log(playerPoints);
   if (playerPoints > 21) {
@@ -139,8 +200,23 @@ function showFifthCard() {
   console.log(fifthCardNumber);
   let newFifthCard = cardgame[fifthCardNumber];
   console.log(newFifthCard);
+  if (playersCardsOnHand.includes(newFifthCard)) {
+    showFifthCard();
+  }
   playersCardsOnHand.push(newFifthCard);
+  if (playerPoints > 10 && newFifthCard.value === 11) {
+    newFifthCard.value = 1;
+  }
   console.log(playersCardsOnHand);
+  if (playersCardsOnHand.includes(playersCardsOnHand[0].value === 11) && playerPoints > 10) {
+    playersCardsOnHand[0].value = 1;
+  } else if (playersCardsOnHand.includes(playersCardsOnHand[1].value === 11) && playerPoints > 10) {
+    playersCardsOnHand[1].value = 1;
+  } else if (playersCardsOnHand.includes(playersCardsOnHand[2].value === 11) && playerPoints > 10) {
+    playersCardsOnHand[2].value = 1;
+  } else if (playersCardsOnHand.includes(playersCardsOnHand[3].value === 11) && playerPoints > 10) {
+    playersCardsOnHand[3].value = 1;
+  }
   playerPoints = playerPoints + newFifthCard.value;
   console.log(playerPoints);
   if (playerPoints > 21) {
@@ -182,6 +258,7 @@ function resetGame() {
   document.querySelector("#result-for-player").textContent = playerPoints;
 }
 
+// ==== Start game for computer, when stand is pressed by player ======
 function startGameForComputer() {
   console.log("deal cards for computer");
   document.querySelector("#deal-card").classList.add("hidden");
