@@ -13,7 +13,7 @@ async function start() {
   console.log(cardgame);
   document.querySelector("#deal-card").addEventListener("click", dealCard);
   //   showCardgame(cardgame);
-//   showFirstCard();
+  //   showFirstCard();
 }
 
 // ==== get JSON data ======
@@ -41,6 +41,10 @@ function dealCard() {
     showSecondCard();
   } else if (playersCardsOnHand.length === 2) {
     showThirdCard();
+  } else if (playersCardsOnHand.length === 3) {
+    showFourthCard();
+  } else if (playersCardsOnHand.length === 4) {
+    showFifthCard();
   }
 }
 
@@ -53,9 +57,11 @@ function showFirstCard() {
   let newFirstCard = cardgame[firstCardNumber];
   console.log(newFirstCard);
   playersCardsOnHand.push(newFirstCard);
-    console.log(playersCardsOnHand);
-    document.querySelector("#first-card").classList.remove("hidden");
-  const cardHtml = /*html*/ `<P>${newFirstCard.name}</P>`;
+  console.log(playersCardsOnHand);
+  playerPoints = newFirstCard.value;
+  console.log(playerPoints);
+  document.querySelector("#first-card").classList.remove("hidden");
+  const cardHtml = /*html*/ `<p>${newFirstCard.name}</p>`;
   document.querySelector("#first-card").insertAdjacentHTML("beforeend", cardHtml);
 }
 
@@ -68,9 +74,11 @@ function showSecondCard() {
   let newSecondCard = cardgame[secondCardNumber];
   console.log(newSecondCard);
   playersCardsOnHand.push(newSecondCard);
-    console.log(playersCardsOnHand);
-    document.querySelector("#second-card").classList.remove("hidden");
-  const cardHtml = /*html*/ `<P>${newSecondCard.name}</P>`;
+  console.log(playersCardsOnHand);
+  playerPoints = playerPoints + newSecondCard.value;
+  console.log(playerPoints);
+  document.querySelector("#second-card").classList.remove("hidden");
+  const cardHtml = /*html*/ `<p>${newSecondCard.name}</p>`;
   document.querySelector("#second-card").insertAdjacentHTML("beforeend", cardHtml);
 }
 
@@ -83,8 +91,44 @@ function showThirdCard() {
   let newThirdCard = cardgame[thirdCardNumber];
   console.log(newThirdCard);
   playersCardsOnHand.push(newThirdCard);
-    console.log(playersCardsOnHand);
-    document.querySelector("#third-card").classList.remove("hidden");
-  const cardHtml = /*html*/ `<P>${newThirdCard.name}</P>`;
+  console.log(playersCardsOnHand);
+  playerPoints = playerPoints + newThirdCard.value;
+  console.log(playerPoints);
+  document.querySelector("#third-card").classList.remove("hidden");
+  const cardHtml = /*html*/ `<p>${newThirdCard.name}</p>`;
   document.querySelector("#third-card").insertAdjacentHTML("beforeend", cardHtml);
+}
+
+// ==== show fourth card ======
+function showFourthCard() {
+  let fourthCardNumber = Math.random();
+  console.log(fourthCardNumber);
+  fourthCardNumber = Math.floor(fourthCardNumber * 52);
+  console.log(fourthCardNumber);
+  let newFourthCard = cardgame[fourthCardNumber];
+  console.log(newFourthCard);
+  playersCardsOnHand.push(newFourthCard);
+  console.log(playersCardsOnHand);
+  playerPoints = playerPoints + newFourthCard.value;
+  console.log(playerPoints);
+  document.querySelector("#fourth-card").classList.remove("hidden");
+  const cardHtml = /*html*/ `<p>${newFourthCard.name}</p>`;
+  document.querySelector("#fourth-card").insertAdjacentHTML("beforeend", cardHtml);
+}
+
+// ==== show fifth card ======
+function showFifthCard() {
+  let fifthCardNumber = Math.random();
+  console.log(fifthCardNumber);
+  fifthCardNumber = Math.floor(fifthCardNumber * 52);
+  console.log(fifthCardNumber);
+  let newFifthCard = cardgame[fifthCardNumber];
+  console.log(newFifthCard);
+  playersCardsOnHand.push(newFifthCard);
+  console.log(playersCardsOnHand);
+  playerPoints = playerPoints + newFifthCard.value;
+  console.log(playerPoints);
+  document.querySelector("#fifth-card").classList.remove("hidden");
+  const cardHtml = /*html*/ `<p>${newFifthCard.name}</p>`;
+  document.querySelector("#fifth-card").insertAdjacentHTML("beforeend", cardHtml);
 }
