@@ -3,8 +3,8 @@ body {
 }
 
 #cards-on-hand {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
 }
 
 #first-card {
@@ -25,6 +25,18 @@ body {
   height: 20em;
 }
 
-.hidden{
-    display: none;
+.hidden {
+  display: none;
+}
+
+#computers-cards-on-hand {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  margin-top: 50%;
+}
+
+#first-card-for-computer {
+  background-color: white;
+  width: 20%;
+  height: 20em;
 }

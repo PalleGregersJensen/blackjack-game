@@ -2,6 +2,7 @@
 
 let cardgame = [];
 let playersCardsOnHand = [];
+let computersCardsOnHand = [];
 let playerPoints = 0;
 let computerPoints = 0;
 
@@ -12,8 +13,6 @@ async function start() {
   cardgame = await getJsonFile();
   console.log(cardgame);
   document.querySelector("#deal-card").addEventListener("click", dealCard);
-  //   showCardgame(cardgame);
-  //   showFirstCard();
 }
 
 // ==== get JSON data ======
@@ -25,12 +24,6 @@ async function getJsonFile() {
   return data;
 }
 
-// function showCardgame(cardsList) {
-//   for (const card of cardsList) {
-//     const cardHtml = /*html*/ `<P>${card.name}</P>`;
-//     document.querySelector("#cardgame-holder").insertAdjacentHTML("beforeend", cardHtml);
-//   }
-// }
 
 // ==== decide which cards are shown ======
 function dealCard() {
@@ -60,20 +53,10 @@ function showFirstCard() {
     showFirstCard();
   }
   playersCardsOnHand.push(newFirstCard);
-  // if (playerPoints > 10 && newFirstCard.value === 11) {
-    // newFirstCard.value = 1;
-  // }
   console.log(playersCardsOnHand);
   console.log(playersCardsOnHand[0].value);
   if (playersCardsOnHand[0].value === 11 && playerPoints > 10) {
-    playersCardsOnHand[0].value = 1;
-  // } else if (playersCardsOnHand[1].value === 11 && playerPoints > 10) {
-    // playersCardsOnHand[1].value = 1;
-  // } else if (playersCardsOnHand[2].value === 11 && playerPoints > 10) {
-    // playersCardsOnHand[2].value = 1;
-  // } else if (playersCardsOnHand[3].value === 11 && playerPoints > 10) {
-    // playersCardsOnHand[3].value = 1;
-  }
+    playersCardsOnHand[0].value = 1;}
   playerPoints = newFirstCard.value;
   console.log(playerPoints);
   document.querySelector("#stand-for-player-button").classList.remove("hidden");
@@ -104,10 +87,6 @@ function showSecondCard() {
     playersCardsOnHand[0].value = 1;
   } else if (playersCardsOnHand[1].value === 11 && playerPoints > 10) {
     playersCardsOnHand[1].value = 1;
-  // } else if (playersCardsOnHand[2].value === 11 && playerPoints > 10) {
-    // playersCardsOnHand[2].value = 1;
-  // } else if (playersCardsOnHand.includes(playersCardsOnHand[3].value === 11) && playerPoints > 10) {
-    // playersCardsOnHand[3].value = 1;
   }
   playerPoints = playerPoints + newSecondCard.value;
   console.log(playerPoints);
@@ -140,8 +119,6 @@ function showThirdCard() {
     playersCardsOnHand[1].value = 1;
   } else if (playersCardsOnHand[2].value === 11 && playerPoints > 10) {
     playersCardsOnHand[2].value = 1;
-  // } else if (playersCardsOnHand.includes(playersCardsOnHand[3].value === 11) && playerPoints > 10) {
-  //   playersCardsOnHand[3].value = 1;
   }
   playerPoints = playerPoints + newThirdCard.value;
   console.log(playerPoints);
@@ -258,9 +235,36 @@ function resetGame() {
   document.querySelector("#result-for-player").textContent = playerPoints;
 }
 
+// ==== Functions for computer's game ======
 // ==== Start game for computer, when stand is pressed by player ======
 function startGameForComputer() {
   console.log("deal cards for computer");
   document.querySelector("#deal-card").classList.add("hidden");
   document.querySelector("#stand-for-player-button").classList.add("hidden");
+  showFirstCardForComputer();
+}
+
+// ==== Deal cards for computer ======
+function showFirstCardForComputer() {
+let firstCardNumber = Math.random();
+console.log(firstCardNumber);
+firstCardNumber = Math.floor(firstCardNumber * 52);
+console.log(firstCardNumber);
+let newFirstCard = cardgame[firstCardNumber];
+console.log(newFirstCard);
+if (playersCardsOnHand.includes(newFirstCard)) {
+  showFirstCard();
+}
+computersCardsOnHand.push(newFirstCard);
+console.log(computersCardsOnHand);
+console.log(computersCardsOnHand[0].value);
+if (computersCardsOnHand[0].value === 11 && computerPoints > 10) {
+  computersCardsOnHand[0].value = 1;
+}
+computerPoints = newFirstCard.value;
+console.log(computerPoints);
+document.querySelector("#first-card-for-computer").classList.remove("hidden");
+const cardHtml = /*html*/ `<p>${newFirstCard.name}</p>`;
+document.querySelector("#first-card-for-computer").insertAdjacentHTML("beforeend", cardHtml);
+document.querySelector("#result-for-computer").textContent = `${computerPoints}`;
 }
