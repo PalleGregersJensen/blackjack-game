@@ -60,9 +60,12 @@ function showFirstCard() {
   console.log(playersCardsOnHand);
   playerPoints = newFirstCard.value;
   console.log(playerPoints);
+  document.querySelector("#stand-for-player-button").classList.remove("hidden");
   document.querySelector("#first-card").classList.remove("hidden");
   const cardHtml = /*html*/ `<p>${newFirstCard.name}</p>`;
   document.querySelector("#first-card").insertAdjacentHTML("beforeend", cardHtml);
+  document.querySelector("#stand-for-player-button").addEventListener("click", startGameForComputer);
+  document.querySelector("#result-for-player").textContent = `${playerPoints}`;
 }
 
 // ==== show second card ======
@@ -80,6 +83,8 @@ function showSecondCard() {
   document.querySelector("#second-card").classList.remove("hidden");
   const cardHtml = /*html*/ `<p>${newSecondCard.name}</p>`;
   document.querySelector("#second-card").insertAdjacentHTML("beforeend", cardHtml);
+  document.querySelector("#stand-for-player-button").addEventListener("click", startGameForComputer);
+  document.querySelector("#result-for-player").textContent = `${playerPoints}`;
 }
 
 // ==== show third card ======
@@ -100,6 +105,8 @@ function showThirdCard() {
   document.querySelector("#third-card").classList.remove("hidden");
   const cardHtml = /*html*/ `<p>${newThirdCard.name}</p>`;
   document.querySelector("#third-card").insertAdjacentHTML("beforeend", cardHtml);
+  document.querySelector("#stand-for-player-button").addEventListener("click", startGameForComputer);
+  document.querySelector("#result-for-player").textContent = `${playerPoints}`;
 }
 
 // ==== show fourth card ======
@@ -120,6 +127,8 @@ function showFourthCard() {
   document.querySelector("#fourth-card").classList.remove("hidden");
   const cardHtml = /*html*/ `<p>${newFourthCard.name}</p>`;
   document.querySelector("#fourth-card").insertAdjacentHTML("beforeend", cardHtml);
+  document.querySelector("#stand-for-player-button").addEventListener("click", startGameForComputer);
+  document.querySelector("#result-for-player").textContent = `${playerPoints}`;
 }
 
 // ==== show fifth card ======
@@ -140,14 +149,17 @@ function showFifthCard() {
   document.querySelector("#fifth-card").classList.remove("hidden");
   const cardHtml = /*html*/ `<p>${newFifthCard.name}</p>`;
   document.querySelector("#fifth-card").insertAdjacentHTML("beforeend", cardHtml);
+  document.querySelector("#stand-for-player-button").addEventListener("click", startGameForComputer);
+  document.querySelector("#result-for-player").textContent = `${playerPoints}`;
 }
 
 // ==== too many points for player ======
-function tooManyPointsForPlayer () {  
-    document.querySelector("#deal-card").classList.add("hidden");
-    document.querySelector("#too-many-points-for-player").textContent = `Game over. You have ${playerPoints} points`;
+function tooManyPointsForPlayer() {
+  document.querySelector("#deal-card").classList.add("hidden");
+  document.querySelector("#too-many-points-for-player").textContent = `Game over. You have ${playerPoints} points`;
   document.querySelector("#try-again").classList.remove("hidden");
   document.querySelector("#try-again").addEventListener("click", resetGame);
+  document.querySelector("#stand-for-player-button").classList.add("hidden");
 }
 
 // ==== reset game ======
@@ -167,4 +179,11 @@ function resetGame() {
   document.querySelector("#third-card").classList.add("hidden");
   document.querySelector("#fourth-card").classList.add("hidden");
   document.querySelector("#fifth-card").classList.add("hidden");
+  document.querySelector("#result-for-player").textContent = playerPoints;
+}
+
+function startGameForComputer() {
+  console.log("deal cards for computer");
+  document.querySelector("#deal-card").classList.add("hidden");
+  document.querySelector("#stand-for-player-button").classList.add("hidden");
 }
