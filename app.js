@@ -206,8 +206,11 @@ function showFifthCard() {
   document.querySelector("#fifth-card").classList.remove("hidden");
   const cardHtml = /*html*/ `<p>${newFifthCard.name}</p>`;
   document.querySelector("#fifth-card").insertAdjacentHTML("beforeend", cardHtml);
-  document.querySelector("#stand-for-player-button").addEventListener("click", startGameForComputer);
   document.querySelector("#result-for-player").textContent = `${playerPoints}`;
+  if (playerPoints < 21) {
+    playerPoints = 21;
+  }
+  document.querySelector("#stand-for-player-button").addEventListener("click", startGameForComputer);
 }
 
 // ==== too many points for player ======
@@ -441,6 +444,9 @@ function showFifthCardForComputer() {
   const cardHtml = /*html*/ `<p>${newFifthCard.name}</p>`;
   document.querySelector("#fifth-card-for-computer").insertAdjacentHTML("beforeend", cardHtml);
   document.querySelector("#result-for-computer").textContent = `${computerPoints}`;
+  if (computerPoints < 21) {
+    computerPoints = 21;
+  }
   if (computerPoints < playerPoints && playerPoints < 22) {
     showResultOfGame();
   } else if (computerPoints >= playerPoints) {
