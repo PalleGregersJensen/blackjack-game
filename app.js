@@ -84,16 +84,16 @@ function showSecondCard() {
   console.log(cardgame);
   playersCardsOnHand.push(newSecondCard);
   console.log(playersCardsOnHand);
-  playerPoints = playerPoints + newSecondCard.value;
+  playerPoints = playerPoints + playersCardsOnHand[1].value;
   console.log(playerPoints);
   document.querySelector("#second-card").classList.remove("hidden");
   const cardHtml = /*html*/ `<p>${newSecondCard.name}</p>`;
   document.querySelector("#second-card").insertAdjacentHTML("beforeend", cardHtml);
   document.querySelector("#stand-for-player-button").addEventListener("click", startGameForComputer);
   if (playersCardsOnHand[0].value === 11 && playerPoints > 21) {
-    playerPoints = playerPoints - 10;
+    playersCardsOnHand[0].value = 1;
   } else if (playersCardsOnHand[1].value === 11 && playerPoints > 21) {
-    playerPoints = playerPoints - 10;
+    playersCardsOnHand[1].value = 1;
   }
   document.querySelector("#result-for-player").textContent = `${playerPoints}`;
 }
@@ -114,13 +114,13 @@ function showThirdCard() {
   console.log(cardgame);
   playersCardsOnHand.push(newThirdCard);
   console.log(playersCardsOnHand);
-  playerPoints = playerPoints + newThirdCard.value;
+  playerPoints = playerPoints + playersCardsOnHand[2].value;
   if (playersCardsOnHand[0].value === 11 && playerPoints > 21) {
-    playerPoints = playerPoints - 10;
+    playersCardsOnHand[0].value = 1;
   } else if (playersCardsOnHand[1].value === 11 && playerPoints > 21) {
-    playerPoints = playerPoints - 10;
+    playersCardsOnHand[1].value = 1;
   } else if (playersCardsOnHand[2].value === 11 && playerPoints > 21) {
-    playerPoints = playerPoints - 10;
+    playersCardsOnHand[2].value = 1;
   }
   console.log(playerPoints);
   if (playerPoints > 21) {
@@ -148,16 +148,16 @@ function showFourthCard() {
   cardgame = firstPartOfCardGame.concat(secondPartOfCardGame);
   console.log(cardgame);
   playersCardsOnHand.push(newFourthCard);
-  playerPoints = playerPoints + newFourthCard.value;
+  playerPoints = playerPoints + playersCardsOnHand[3].value;
   console.log(playersCardsOnHand);
   if (playersCardsOnHand[0].value === 11 && playerPoints > 21) {
-    playerPoints = playerPoints - 10;
+    playersCardsOnHand[0].value = 1;
   } else if (playersCardsOnHand[1].value === 11 && playerPoints > 21) {
-    playerPoints = playerPoints - 10;
+    playersCardsOnHand[1].value = 1;
   } else if (playersCardsOnHand[2].value === 11 && playerPoints > 21) {
-    playerPoints = playerPoints - 10;
+    playersCardsOnHand[2].value = 1;
   } else if (playersCardsOnHand[3].value === 11 && playerPoints > 21) {
-    playerPoints = playerPoints - 10;
+    playersCardsOnHand[3].value = 1;
   }
   console.log(playerPoints);
   if (playerPoints > 21) {
@@ -185,19 +185,19 @@ function showFifthCard() {
   cardgame = firstPartOfCardGame.concat(secondPartOfCardGame);
   console.log(cardgame);
   playersCardsOnHand.push(newFifthCard);
-  playerPoints = playerPoints + newFifthCard.value;
+  playerPoints = playerPoints + playersCardsOnHand[4].value;
 
   console.log(playersCardsOnHand);
   if (playersCardsOnHand[0].value === 11 && playerPoints > 21) {
-    playerPoints = playerPoints - 10;
+    playersCardsOnHand[0].value = 1;
   } else if (playersCardsOnHand[1].value === 11 && playerPoints > 21) {
-    playerPoints = playerPoints - 10;
+    playersCardsOnHand[1].value = 1;
   } else if (playersCardsOnHand[2].value === 11 && playerPoints > 21) {
-    playerPoints = playerPoints - 10;
+    playersCardsOnHand[2].value = 1;
   } else if (playersCardsOnHand[3].value === 11 && playerPoints > 21) {
-    playerPoints = playerPoints - 10;
+    playersCardsOnHand[3].value = 1;
   } else if (playersCardsOnHand[4].value === 11 && playerPoints > 21) {
-    playerPoints = playerPoints - 10;
+    playersCardsOnHand[4].value = 1;
   }
   console.log(playerPoints);
   if (playerPoints > 21) {
@@ -284,7 +284,7 @@ function showFirstCardForComputer() {
   console.log(computersCardsOnHand[0].value);
   computerPoints = newFirstCard.value;
   if (computersCardsOnHand[0].value === 11 && computerPoints > 21) {
-    computerPoints = computerPoints - 10;
+    computersCardsOnHand[0].value = 1;
   }
   console.log(computerPoints);
   document.querySelector("#first-card-for-computer").classList.remove("hidden");
@@ -315,11 +315,11 @@ function showSecondCardForComputer() {
   computersCardsOnHand.push(newSecondCard);
   console.log(computersCardsOnHand);
   console.log(computersCardsOnHand[1].value);
-  computerPoints = computerPoints + newSecondCard.value;
-  if (computersCardsOnHand[1].value === 11 && computerPoints > 21) {
-    computerPoints = computerPoints - 10;
-  } else if (computersCardsOnHand[0].value === 11 && computerPoints > 21) {
-    computerPoints = computerPoints - 10;
+  computerPoints = computerPoints + computersCardsOnHand[1].value;
+  if (computersCardsOnHand[0].value === 11 && computerPoints > 21) {
+    computersCardsOnHand[0].value = 1;
+  } else if (computersCardsOnHand[1].value === 11 && computerPoints > 21) {
+    computersCardsOnHand[1].value = 1;
   }
   console.log(computerPoints);
   document.querySelector("#second-card-for-computer").classList.remove("hidden");
@@ -350,15 +350,15 @@ function showThirdCardForComputer() {
   computersCardsOnHand.push(newThirdCard);
   console.log(computersCardsOnHand);
   console.log(computersCardsOnHand[2].value);
-  computerPoints = computerPoints + newThirdCard.value;
+  computerPoints = computerPoints + computersCardsOnHand[2].value;
   if (computersCardsOnHand[0].value === 11 && computerPoints > 21) {
-    computerPoints = computerPoints - 10;
+    computersCardsOnHand[0].value = 1;
     console.log(computersCardsOnHand[0]);
   } else if (computersCardsOnHand[1].value === 11 && computerPoints > 21) {
-    computerPoints = computerPoints - 10;
+    computersCardsOnHand[1].value = 1;
     console.log(computersCardsOnHand[1]);
   } else if (computersCardsOnHand[2].value === 11 && computerPoints > 21) {
-    computerPoints = computerPoints - 10;
+    computersCardsOnHand[2].value = 1;
     console.log(computersCardsOnHand[2]);
   }
   console.log(computerPoints);
@@ -389,15 +389,15 @@ function showFourthCardForComputer() {
   console.log(cardgame);
   computersCardsOnHand.push(newFourthCard);
   console.log(computersCardsOnHand);
-  computerPoints = computerPoints + newFourthCard.value;
+  computerPoints = computerPoints + computersCardsOnHand[3].value;
   if (computersCardsOnHand[0].value === 11 && computerPoints > 21) {
-    computerPoints = computerPoints - 10;
+    computersCardsOnHand[0].value = 1;
   } else if (computersCardsOnHand[1].value === 11 && computerPoints > 21) {
-    computerPoints = computerPoints - 10;
+    computersCardsOnHand[1].value = 1;
   } else if (computersCardsOnHand[2].value === 11 && computerPoints > 21) {
-    computerPoints = computerPoints - 10;
+    computersCardsOnHand[2].value = 1;
   } else if (computersCardsOnHand[3].value === 11 && computerPoints > 21) {
-    computerPoints = computerPoints - 10;
+    computersCardsOnHand[3].value = 1;
     console.log(computersCardsOnHand[3].value);
   }
   console.log(computerPoints);
@@ -429,15 +429,15 @@ function showFifthCardForComputer() {
   computersCardsOnHand.push(newFifthCard);
   console.log(computersCardsOnHand);
   console.log(computersCardsOnHand[4].value);
-  computerPoints = computerPoints + newFifthCard.value;
+  computerPoints = computerPoints + computersCardsOnHand[4].value;
   if (computersCardsOnHand[0].value === 11 && computerPoints > 21) {
-    computerPoints = computerPoints - 10;
+    computersCardsOnHand[4].value = 1;
   } else if (computersCardsOnHand[1].value === 11 && computerPoints > 21) {
-    computerPoints = computerPoints - 10;
+    computersCardsOnHand[2].value = 1;
   } else if (computersCardsOnHand[2].value === 11 && computerPoints > 21) {
-    computerPoints = computerPoints - 10;
+    computersCardsOnHand[3].value = 1;
   } else if (computersCardsOnHand[4].value === 11 && computerPoints > 21) {
-    computerPoints = computerPoints - 10;
+    computersCardsOnHand[4].value = 1;
   }
   console.log(computerPoints);
   document.querySelector("#fifth-card-for-computer").classList.remove("hidden");
