@@ -24,7 +24,6 @@ async function getJsonFile() {
   return data;
 }
 
-
 // ==== decide which cards are shown ======
 function dealCard() {
   console.log("deal card");
@@ -51,15 +50,13 @@ function showFirstCard() {
   console.log(newFirstCard);
   const firstPartOfCardGame = cardgame.slice(0, firstCardNumber);
   console.log(firstPartOfCardGame);
-  const secondPartOfCardGame = cardgame.slice(firstCardNumber+1)
+  const secondPartOfCardGame = cardgame.slice(firstCardNumber + 1);
   console.log(secondPartOfCardGame);
   cardgame = firstPartOfCardGame.concat(secondPartOfCardGame);
   console.log(cardgame);
   playersCardsOnHand.push(newFirstCard);
   console.log(playersCardsOnHand);
   console.log(playersCardsOnHand[0].value);
-  if (playersCardsOnHand[0].value === 11 && playerPoints > 10) {
-    playersCardsOnHand[0].value = 1;}
   playerPoints = newFirstCard.value;
   console.log(playerPoints);
   document.querySelector("#stand-for-player-button").classList.remove("hidden");
@@ -74,7 +71,7 @@ function showFirstCard() {
 function showSecondCard() {
   let secondCardNumber = Math.random();
   console.log(secondCardNumber);
-  secondCardNumber = Math.floor(secondCardNumber * 52);
+  secondCardNumber = Math.floor(secondCardNumber * 51);
   console.log(secondCardNumber);
   let newSecondCard = cardgame[secondCardNumber];
   console.log(newSecondCard);
@@ -86,21 +83,18 @@ function showSecondCard() {
   console.log(cardgame);
   console.log(cardgame);
   playersCardsOnHand.push(newSecondCard);
-  if (playerPoints > 10 && newSecondCard.value === 11) {
-    newSecondCard.value = 1;
-  }
   console.log(playersCardsOnHand);
-  if (playersCardsOnHand.includes(playersCardsOnHand[0].value === 11) && playerPoints > 10) {
-    playersCardsOnHand[0].value = 1;
-  } else if (playersCardsOnHand[1].value === 11 && playerPoints > 10) {
-    playersCardsOnHand[1].value = 1;
-  }
   playerPoints = playerPoints + newSecondCard.value;
   console.log(playerPoints);
   document.querySelector("#second-card").classList.remove("hidden");
   const cardHtml = /*html*/ `<p>${newSecondCard.name}</p>`;
   document.querySelector("#second-card").insertAdjacentHTML("beforeend", cardHtml);
   document.querySelector("#stand-for-player-button").addEventListener("click", startGameForComputer);
+  if (playersCardsOnHand[0].value === 11 && playerPoints > 21) {
+    playerPoints = playerPoints - 10;
+  } else if (playersCardsOnHand[1].value === 11 && playerPoints > 21) {
+    playerPoints = playerPoints - 10;
+  }
   document.querySelector("#result-for-player").textContent = `${playerPoints}`;
 }
 
@@ -108,7 +102,7 @@ function showSecondCard() {
 function showThirdCard() {
   let thirdCardNumber = Math.random();
   console.log(thirdCardNumber);
-  thirdCardNumber = Math.floor(thirdCardNumber * 52);
+  thirdCardNumber = Math.floor(thirdCardNumber * 50);
   console.log(thirdCardNumber);
   let newThirdCard = cardgame[thirdCardNumber];
   console.log(newThirdCard);
@@ -119,18 +113,15 @@ function showThirdCard() {
   cardgame = firstPartOfCardGame.concat(secondPartOfCardGame);
   console.log(cardgame);
   playersCardsOnHand.push(newThirdCard);
-  if (playerPoints > 10 && newThirdCard.value === 11) {
-    newThirdCard.value = 1;
-  }
   console.log(playersCardsOnHand);
-  if (playersCardsOnHand[0].value === 11 && playerPoints > 10) {
-    playersCardsOnHand[0].value = 1;
-  } else if (playersCardsOnHand[1].value === 11 && playerPoints > 10) {
-    playersCardsOnHand[1].value = 1;
-  } else if (playersCardsOnHand[2].value === 11 && playerPoints > 10) {
-    playersCardsOnHand[2].value = 1;
-  }
   playerPoints = playerPoints + newThirdCard.value;
+  if (playersCardsOnHand[0].value === 11 && playerPoints > 21) {
+    playerPoints = playerPoints - 10;
+  } else if (playersCardsOnHand[1].value === 11 && playerPoints > 21) {
+    playerPoints = playerPoints - 10;
+  } else if (playersCardsOnHand[2].value === 11 && playerPoints > 21) {
+    playerPoints = playerPoints - 10;
+  }
   console.log(playerPoints);
   if (playerPoints > 21) {
     tooManyPointsForPlayer();
@@ -146,7 +137,7 @@ function showThirdCard() {
 function showFourthCard() {
   let fourthCardNumber = Math.random();
   console.log(fourthCardNumber);
-  fourthCardNumber = Math.floor(fourthCardNumber * 52);
+  fourthCardNumber = Math.floor(fourthCardNumber * 49);
   console.log(fourthCardNumber);
   let newFourthCard = cardgame[fourthCardNumber];
   console.log(newFourthCard);
@@ -157,20 +148,17 @@ function showFourthCard() {
   cardgame = firstPartOfCardGame.concat(secondPartOfCardGame);
   console.log(cardgame);
   playersCardsOnHand.push(newFourthCard);
-  if (playerPoints > 10 && newFourthCard.value === 11) {
-    newFourthCard.value = 1;
-  }
-  console.log(playersCardsOnHand);
-  if (playersCardsOnHand[0].value === 11 && playerPoints > 10) {
-    playersCardsOnHand[0].value = 1;
-  } else if (playersCardsOnHand[1].value === 11 && playerPoints > 10) {
-    playersCardsOnHand[1].value = 1;
-  } else if (playersCardsOnHand[2].value === 11 && playerPoints > 10) {
-    playersCardsOnHand[2].value = 1;
-  } else if (playersCardsOnHand[3].value === 11 && playerPoints > 10) {
-    playersCardsOnHand[3].value = 1;
-  }
   playerPoints = playerPoints + newFourthCard.value;
+  console.log(playersCardsOnHand);
+  if (playersCardsOnHand[0].value === 11 && playerPoints > 21) {
+    playerPoints = playerPoints - 10;
+  } else if (playersCardsOnHand[1].value === 11 && playerPoints > 21) {
+    playerPoints = playerPoints - 10;
+  } else if (playersCardsOnHand[2].value === 11 && playerPoints > 21) {
+    playerPoints = playerPoints - 10;
+  } else if (playersCardsOnHand[3].value === 11 && playerPoints > 21) {
+    playerPoints = playerPoints - 10;
+  }
   console.log(playerPoints);
   if (playerPoints > 21) {
     tooManyPointsForPlayer();
@@ -186,7 +174,7 @@ function showFourthCard() {
 function showFifthCard() {
   let fifthCardNumber = Math.random();
   console.log(fifthCardNumber);
-  fifthCardNumber = Math.floor(fifthCardNumber * 52);
+  fifthCardNumber = Math.floor(fifthCardNumber * 48);
   console.log(fifthCardNumber);
   let newFifthCard = cardgame[fifthCardNumber];
   console.log(newFifthCard);
@@ -197,20 +185,20 @@ function showFifthCard() {
   cardgame = firstPartOfCardGame.concat(secondPartOfCardGame);
   console.log(cardgame);
   playersCardsOnHand.push(newFifthCard);
-  if (playerPoints > 10 && newFifthCard.value === 11) {
-    newFifthCard.value = 1;
-  }
-  console.log(playersCardsOnHand);
-  if (playersCardsOnHand.includes(playersCardsOnHand[0].value === 11) && playerPoints > 10) {
-    playersCardsOnHand[0].value = 1;
-  } else if (playersCardsOnHand.includes(playersCardsOnHand[1].value === 11) && playerPoints > 10) {
-    playersCardsOnHand[1].value = 1;
-  } else if (playersCardsOnHand.includes(playersCardsOnHand[2].value === 11) && playerPoints > 10) {
-    playersCardsOnHand[2].value = 1;
-  } else if (playersCardsOnHand.includes(playersCardsOnHand[3].value === 11) && playerPoints > 10) {
-    playersCardsOnHand[3].value = 1;
-  }
   playerPoints = playerPoints + newFifthCard.value;
+
+  console.log(playersCardsOnHand);
+  if (playersCardsOnHand[0].value === 11 && playerPoints > 21) {
+    playerPoints = playerPoints - 10;
+  } else if (playersCardsOnHand[1].value === 11 && playerPoints > 21) {
+    playerPoints = playerPoints - 10;
+  } else if (playersCardsOnHand[2].value === 11 && playerPoints > 21) {
+    playerPoints = playerPoints - 10;
+  } else if (playersCardsOnHand[3].value === 11 && playerPoints > 21) {
+    playerPoints = playerPoints - 10;
+  } else if (playersCardsOnHand[4].value === 11 && playerPoints > 21) {
+    playerPoints = playerPoints - 10;
+  }
   console.log(playerPoints);
   if (playerPoints > 21) {
     tooManyPointsForPlayer();
@@ -278,7 +266,7 @@ function startGameForComputer() {
 function showFirstCardForComputer() {
   let firstCardNumber = Math.random();
   console.log(firstCardNumber);
-  firstCardNumber = Math.floor(firstCardNumber * 52);
+  firstCardNumber = Math.floor(firstCardNumber * 47);
   console.log(firstCardNumber);
   let newFirstCard = cardgame[firstCardNumber];
   console.log(newFirstCard);
@@ -291,10 +279,10 @@ function showFirstCardForComputer() {
   computersCardsOnHand.push(newFirstCard);
   console.log(computersCardsOnHand);
   console.log(computersCardsOnHand[0].value);
-  if (computersCardsOnHand[0].value === 11 && computerPoints > 10) {
-    computersCardsOnHand[0].value = 1;
-  }
   computerPoints = newFirstCard.value;
+  if (computersCardsOnHand[0].value === 11 && computerPoints > 21) {
+    computerPoints = computerPoints - 10;
+  }
   console.log(computerPoints);
   document.querySelector("#first-card-for-computer").classList.remove("hidden");
   const cardHtml = /*html*/ `<p>${newFirstCard.name}</p>`;
@@ -311,7 +299,7 @@ function showSecondCardForComputer() {
   console.log("Andet kort for compter");
   let secondCardNumber = Math.random();
   console.log(secondCardNumber);
-  secondCardNumber = Math.floor(secondCardNumber * 52);
+  secondCardNumber = Math.floor(secondCardNumber * 46);
   console.log(secondCardNumber);
   let newSecondCard = cardgame[secondCardNumber];
   console.log(newSecondCard);
@@ -324,10 +312,12 @@ function showSecondCardForComputer() {
   computersCardsOnHand.push(newSecondCard);
   console.log(computersCardsOnHand);
   console.log(computersCardsOnHand[1].value);
-  if (computersCardsOnHand[1].value === 11 && computerPoints > 10) {
-    computersCardsOnHand[1].value = 1;
+  computerPoints = computerPoints + newSecondCard.value;
+  if (computersCardsOnHand[1].value === 11 && computerPoints > 21) {
+    computerPoints = computerPoints - 10;
+  } else if (computersCardsOnHand[0].value === 11 && computerPoints > 21) {
+    computerPoints = computerPoints - 10;
   }
-  computerPoints = computerPoints+newSecondCard.value;
   console.log(computerPoints);
   document.querySelector("#second-card-for-computer").classList.remove("hidden");
   const cardHtml = /*html*/ `<p>${newSecondCard.name}</p>`;
@@ -344,7 +334,7 @@ function showThirdCardForComputer() {
   console.log("deal third card for computer");
   let thirdCardNumber = Math.random();
   console.log(thirdCardNumber);
-  thirdCardNumber = Math.floor(thirdCardNumber * 52);
+  thirdCardNumber = Math.floor(thirdCardNumber * 45);
   console.log(thirdCardNumber);
   let newThirdCard = cardgame[thirdCardNumber];
   console.log(newThirdCard);
@@ -357,10 +347,17 @@ function showThirdCardForComputer() {
   computersCardsOnHand.push(newThirdCard);
   console.log(computersCardsOnHand);
   console.log(computersCardsOnHand[2].value);
-  if (computersCardsOnHand[2].value === 11 && computerPoints > 10) {
-    computersCardsOnHand[2].value = 1;
-  }
   computerPoints = computerPoints + newThirdCard.value;
+  if (computersCardsOnHand[0].value === 11 && computerPoints > 21) {
+    computerPoints = computerPoints - 10;
+    console.log(computersCardsOnHand[0]);
+  } else if (computersCardsOnHand[1].value === 11 && computerPoints > 21) {
+    computerPoints = computerPoints - 10;
+    console.log(computersCardsOnHand[1]);
+  } else if (computersCardsOnHand[2].value === 11 && computerPoints > 21) {
+    computerPoints = computerPoints - 10;
+    console.log(computersCardsOnHand[2]);
+  }
   console.log(computerPoints);
   document.querySelector("#third-card-for-computer").classList.remove("hidden");
   const cardHtml = /*html*/ `<p>${newThirdCard.name}</p>`;
@@ -377,7 +374,7 @@ function showFourthCardForComputer() {
   console.log("Deal fourth card for computer");
   let fourthCardNumber = Math.random();
   console.log(fourthCardNumber);
-  fourthCardNumber = Math.floor(fourthCardNumber * 52);
+  fourthCardNumber = Math.floor(fourthCardNumber * 44);
   console.log(fourthCardNumber);
   let newFourthCard = cardgame[fourthCardNumber];
   console.log(newFourthCard);
@@ -389,11 +386,17 @@ function showFourthCardForComputer() {
   console.log(cardgame);
   computersCardsOnHand.push(newFourthCard);
   console.log(computersCardsOnHand);
-  console.log(computersCardsOnHand[3].value);
-  if (computersCardsOnHand[3].value === 11 && computerPoints > 10) {
-    computersCardsOnHand[3].value = 1;
-  }
   computerPoints = computerPoints + newFourthCard.value;
+  if (computersCardsOnHand[0].value === 11 && computerPoints > 21) {
+    computerPoints = computerPoints - 10;
+  } else if (computersCardsOnHand[1].value === 11 && computerPoints > 21) {
+    computerPoints = computerPoints - 10;
+  } else if (computersCardsOnHand[2].value === 11 && computerPoints > 21) {
+    computerPoints = computerPoints - 10;
+  } else if (computersCardsOnHand[3].value === 11 && computerPoints > 21) {
+    computerPoints = computerPoints - 10;
+    console.log(computersCardsOnHand[3].value);
+  }
   console.log(computerPoints);
   document.querySelector("#fourth-card-for-computer").classList.remove("hidden");
   const cardHtml = /*html*/ `<p>${newFourthCard.name}</p>`;
@@ -410,7 +413,7 @@ function showFifthCardForComputer() {
   console.log("deal fifth card");
   let fifthCardNumber = Math.random();
   console.log(fifthCardNumber);
-  fifthCardNumber = Math.floor(fifthCardNumber * 52);
+  fifthCardNumber = Math.floor(fifthCardNumber * 43);
   console.log(fifthCardNumber);
   let newFifthCard = cardgame[fifthCardNumber];
   console.log(newFifthCard);
@@ -423,10 +426,16 @@ function showFifthCardForComputer() {
   computersCardsOnHand.push(newFifthCard);
   console.log(computersCardsOnHand);
   console.log(computersCardsOnHand[4].value);
-  if (computersCardsOnHand[4].value === 11 && computerPoints > 10) {
-    computersCardsOnHand[4].value = 1;
-  }
   computerPoints = computerPoints + newFifthCard.value;
+  if (computersCardsOnHand[0].value === 11 && computerPoints > 21) {
+    computerPoints = computerPoints - 10;
+  } else if (computersCardsOnHand[1].value === 11 && computerPoints > 21) {
+    computerPoints = computerPoints - 10;
+  } else if (computersCardsOnHand[2].value === 11 && computerPoints > 21) {
+    computerPoints = computerPoints - 10;
+  } else if (computersCardsOnHand[4].value === 11 && computerPoints > 21) {
+    computerPoints = computerPoints - 10;
+  }
   console.log(computerPoints);
   document.querySelector("#fifth-card-for-computer").classList.remove("hidden");
   const cardHtml = /*html*/ `<p>${newFifthCard.name}</p>`;
@@ -445,8 +454,8 @@ function showResultOfGame() {
     document.querySelector("#ok-button-in-computer-wins-message").addEventListener("click", closeDialog);
   } else if (playerPoints > computerPoints && playerPoints < 22) {
     document.querySelector("#player-wins-message").showModal();
-    document.querySelector("ok-button-in-player-wins-message").addEventListener("click", closeDialog);
-  } else if (computerPoints >21) {
+    document.querySelector("#ok-button-in-player-wins-message").addEventListener("click", closeDialog);
+  } else if (computerPoints > 21) {
     document.querySelector("#player-wins-message").showModal();
     document.querySelector("#ok-button-in-player-wins-message").addEventListener("click", closeDialog);
   }
