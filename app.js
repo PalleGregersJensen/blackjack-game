@@ -84,17 +84,23 @@ function showSecondCard() {
   console.log(cardgame);
   playersCardsOnHand.push(newSecondCard);
   console.log(playersCardsOnHand);
-  playerPoints = playerPoints + playersCardsOnHand[1].value;
+  // playerPoints = playerPoints + playersCardsOnHand[1].value;
+  let ifFirstCardAce = playersCardsOnHand[0].value;
+  let ifSecondCardAce = playersCardsOnHand[1].value;
+
+  if (ifFirstCardAce === 11 && playerPoints >= 11) {
+    ifFirstCardAce = 1;
+    console.log(ifFirstCardAce);
+  } else if (ifSecondCardAce === 11 && playerPoints >= 11) {
+    ifSecondCardAce = 1;
+    console.log(ifSecondCardAce);
+  }
+  playerPoints = ifFirstCardAce + ifSecondCardAce;
   console.log(playerPoints);
   document.querySelector("#second-card").classList.remove("hidden");
   const cardHtml = /*html*/ `<p>${newSecondCard.name}</p>`;
   document.querySelector("#second-card").insertAdjacentHTML("beforeend", cardHtml);
   document.querySelector("#stand-for-player-button").addEventListener("click", startGameForComputer);
-  if (playersCardsOnHand[0].value === 11 && playerPoints > 21) {
-    playersCardsOnHand[0].value = 1;
-  } else if (playersCardsOnHand[1].value === 11 && playerPoints > 21) {
-    playersCardsOnHand[1].value = 1;
-  }
   document.querySelector("#result-for-player").textContent = `${playerPoints}`;
 }
 
@@ -114,14 +120,22 @@ function showThirdCard() {
   console.log(cardgame);
   playersCardsOnHand.push(newThirdCard);
   console.log(playersCardsOnHand);
-  playerPoints = playerPoints + playersCardsOnHand[2].value;
-  if (playersCardsOnHand[0].value === 11 && playerPoints > 21) {
-    playersCardsOnHand[0].value = 1;
-  } else if (playersCardsOnHand[1].value === 11 && playerPoints > 21) {
-    playersCardsOnHand[1].value = 1;
-  } else if (playersCardsOnHand[2].value === 11 && playerPoints > 21) {
-    playersCardsOnHand[2].value = 1;
+  // playerPoints = playerPoints + playersCardsOnHand[2].value;
+  let ifFirstCardAce = playersCardsOnHand[0].value;
+  let ifSecondCardAce = playersCardsOnHand[1].value;
+  let ifThirdCardAce = playersCardsOnHand[2].value;
+
+  if (ifFirstCardAce === 11 && playerPoints >= 11) {
+    ifFirstCardAce = 1;
+    console.log(ifFirstCardAce);
+  } else if (ifSecondCardAce === 11 && playerPoints >= 11) {
+    ifSecondCardAce = 1;
+    console.log(ifSecondCardAce);
+  } else if (ifThirdCardAce === 11 && playerPoints >= 11) {
+    ifThirdCardAce = 1;
+    console.log(ifThirdCardAce);
   }
+  playerPoints = ifFirstCardAce + ifSecondCardAce + ifThirdCardAce;
   console.log(playerPoints);
   if (playerPoints > 21) {
     tooManyPointsForPlayer();
@@ -148,17 +162,27 @@ function showFourthCard() {
   cardgame = firstPartOfCardGame.concat(secondPartOfCardGame);
   console.log(cardgame);
   playersCardsOnHand.push(newFourthCard);
-  playerPoints = playerPoints + playersCardsOnHand[3].value;
   console.log(playersCardsOnHand);
-  if (playersCardsOnHand[0].value === 11 && playerPoints > 21) {
-    playersCardsOnHand[0].value = 1;
-  } else if (playersCardsOnHand[1].value === 11 && playerPoints > 21) {
-    playersCardsOnHand[1].value = 1;
-  } else if (playersCardsOnHand[2].value === 11 && playerPoints > 21) {
-    playersCardsOnHand[2].value = 1;
-  } else if (playersCardsOnHand[3].value === 11 && playerPoints > 21) {
-    playersCardsOnHand[3].value = 1;
+  // playerPoints = playerPoints + playersCardsOnHand[3].value;
+  let ifFirstCardAce = playersCardsOnHand[0].value;
+  let ifSecondCardAce = playersCardsOnHand[1].value;
+  let ifThirdCardAce = playersCardsOnHand[2].value;
+  let ifFourthCardAce = playersCardsOnHand[3].value;
+
+  if (ifFirstCardAce === 11 && playerPoints >= 11) {
+    ifFirstCardAce = 1;
+    console.log(ifFirstCardAce);
+  } else if (ifSecondCardAce === 11 && playerPoints >= 11) {
+    ifSecondCardAce = 1;
+    console.log(ifSecondCardAce);
+  } else if (ifThirdCardAce === 11 && playerPoints >= 11) {
+    ifThirdCardAce = 1;
+    console.log(ifThirdCardAce);
+  } else if (ifFourthCardAce === 11 && playerPoints >= 11) {
+    ifFourthCardAce = 1;
+    console.log(ifFourthCardAce);
   }
+  playerPoints = ifFirstCardAce + ifSecondCardAce + ifThirdCardAce + ifFourthCardAce;
   console.log(playerPoints);
   if (playerPoints > 21) {
     tooManyPointsForPlayer();
@@ -185,20 +209,32 @@ function showFifthCard() {
   cardgame = firstPartOfCardGame.concat(secondPartOfCardGame);
   console.log(cardgame);
   playersCardsOnHand.push(newFifthCard);
-  playerPoints = playerPoints + playersCardsOnHand[4].value;
-
   console.log(playersCardsOnHand);
-  if (playersCardsOnHand[0].value === 11 && playerPoints > 21) {
-    playersCardsOnHand[0].value = 1;
-  } else if (playersCardsOnHand[1].value === 11 && playerPoints > 21) {
-    playersCardsOnHand[1].value = 1;
-  } else if (playersCardsOnHand[2].value === 11 && playerPoints > 21) {
-    playersCardsOnHand[2].value = 1;
-  } else if (playersCardsOnHand[3].value === 11 && playerPoints > 21) {
-    playersCardsOnHand[3].value = 1;
-  } else if (playersCardsOnHand[4].value === 11 && playerPoints > 21) {
-    playersCardsOnHand[4].value = 1;
+  // playerPoints = playerPoints + playersCardsOnHand[4].value;
+
+  let ifFirstCardAce = playersCardsOnHand[0].value;
+  let ifSecondCardAce = playersCardsOnHand[1].value;
+  let ifThirdCardAce = playersCardsOnHand[2].value;
+  let ifFourthCardAce = playersCardsOnHand[3].value;
+  let ifFifthCardAce = playersCardsOnHand[4].value;
+
+  if (ifFirstCardAce === 11 && playerPoints >= 11) {
+    ifFirstCardAce = 1;
+    console.log(ifFirstCardAce);
+  } else if (ifSecondCardAce === 11 && playerPoints >= 11) {
+    ifSecondCardAce = 1;
+    console.log(ifSecondCardAce);
+  } else if (ifThirdCardAce === 11 && playerPoints >= 11) {
+    ifThirdCardAce = 1;
+    console.log(ifThirdCardAce);
+  } else if (ifFourthCardAce === 11 && playerPoints >= 11) {
+    ifFourthCardAce = 1;
+    console.log(ifFourthCardAce);
+  } else if (ifFifthCardAce === 11 && playerPoints >= 11) {
+    ifFifthCardAce = 1;
+    console.log(ifFifthCardAce);
   }
+  playerPoints = ifFirstCardAce + ifSecondCardAce + ifThirdCardAce + ifFourthCardAce + ifFifthCardAce;
   console.log(playerPoints);
   if (playerPoints > 21) {
     tooManyPointsForPlayer();
